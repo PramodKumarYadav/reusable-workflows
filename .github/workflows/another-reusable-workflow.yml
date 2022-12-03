@@ -22,3 +22,6 @@ jobs:
     # Runs a single command using the runners shell
     - name: Run a one-line script
       run: echo ${{ secrets.envPAT }}
+    
+    - name: Running script in another repo
+      run: echo Running script in another repo
