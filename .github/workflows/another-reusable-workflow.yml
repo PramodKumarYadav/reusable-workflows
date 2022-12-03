@@ -1,0 +1,24 @@
+name: Another reusable workflow in a seperate repo
+
+on:
+  workflow_call:
+    inputs:
+      config-path:
+        required: true
+        type: string
+    secrets:
+      envPAT:
+        required: true
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/labeler@v4
+      with:
+        repo-token: ${{ secrets.envPAT }}
+        configuration-path: ${{ inputs.config-path }}
+  
+    # Runs a single command using the runners shell
+    - name: Run a one-line script
+      run: echo ${{ secrets.envPAT }}
